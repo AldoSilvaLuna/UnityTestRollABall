@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour {
 	private int counter;
 	public float speed;
 	public Text counterText;
+	public Text winText;
 	
 	// Use this for initialization
 	void Start () {
 		g_Rigidbody = GetComponent<Rigidbody> ();
 		counter = 0;
+		winText.text = "";
 		updateText ();
 	}
 	
@@ -41,5 +43,10 @@ public class PlayerController : MonoBehaviour {
 	void updateText()
 	{
 		counterText.text = "Counter: " + counter.ToString ();
+		if (counter == 10) 
+		{
+			winText.text = "Yo mama!";
+		}
+
 	}
 }
