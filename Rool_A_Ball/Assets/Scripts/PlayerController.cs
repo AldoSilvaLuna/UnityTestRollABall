@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
 	private Rigidbody g_Rigidbody;
+	private int counter;
 	public float speed;
+	public Text counterText;
 	
 	// Use this for initialization
 	void Start () {
 		g_Rigidbody = GetComponent<Rigidbody> ();
+		counter = 0;
+		updateText ();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +34,12 @@ public class PlayerController : MonoBehaviour {
 		if(other.gameObject.CompareTag("Pick Up"))
 		{
 			other.gameObject.SetActive(false);
+			counter = counter + 1;
+			updateText ();
 		}
+	}
+	void updateText()
+	{
+		counterText.text = "Counter: " + counter.ToString ();
 	}
 }
